@@ -15,8 +15,8 @@
         Non ci sono ingredienti disponibili.
         <q-btn label="Creane uno" color="primary" @click="createNewIngredient"></q-btn>
       </div>
-      <div v-for="ingredient in ingredients" :key="ingredient.id" class="col-auto">
-        <q-card style="min-width: 300px" class="full-height">
+      <div v-for="ingredient in ingredients" :key="ingredient.id" class="col-sm-4 col-md-3">
+        <q-card style="min-width: 300px" class="fit">
           <q-card-section>
             <div class="row justify-between items-center q-col-gutter-md">
               <div class="col">
