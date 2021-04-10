@@ -32,9 +32,11 @@ Various environment variables can be used to configure the Java application:
 | `MYSQL_DB`       | _cupcake_factory_ | MySQL schema name | no        |
 | `MYSQL_USER`     | <NONE>            | MySQL user        | yes       |
 | `MYSQL_PASSWORD` | <NONE>            | MySQL password    | yes       |
-| `CUPCAKE_FACTORY_JWT_SECRET` | _8M4uo...UU7xp_            | JWT secret for generating the tokens. It is strongly suggested to feed a new one.    | no       |
-| `CUPCAKE_FACTORY_JWT_EXPIRATION` | _86400000_            | Expiration time for JWT tokens.    | yes       |
+| `CUPCAKE_FACTORY_JWT_SECRET` | _8M4uo...UU7xp_            | JWT secret for generating the tokens. It is strongly suggested to feed a new one. This shouldn't be public.   | no       |
+| `CUPCAKE_FACTORY_JWT_EXPIRATION` | _86400000_            | Expiration time for JWT tokens.    | no       |
 | `CUPCAKE_FACTORY_ALLOWED_ORIGINS` | _http://localhost:8081_            | Allowed origins list for cors.     | no       |
-| `CUPCAKE_FACTORY_DAYS_TO_EXPIRE` | _4_            | Application. Number of days until a dessert can be declared as expired.    | yes       |
-| `CUPCAKE_FACTORY_DAYS_PRICE_MODIFIER_MAP` | _{0:1, 1:1, 2:0.8, 3:0.6}_            | Map to calculate the price modifiers. Keys are the number of days passed since production and values are the percent at which they should be sold    | no       |
+| `CUPCAKE_FACTORY_DAYS_TO_EXPIRE` | _4_            | Application variable. Number of days until a dessert can be declared as expired.    | no       |
+| `CUPCAKE_FACTORY_DAYS_PRICE_MODIFIER_MAP` | _{0:1, 1:1, 2:0.8, 3:0.6}_            | Application variable. Map to calculate the price modifiers. Keys are the number of days passed since production and values are the percent at which they should be sold    | no       |
 
+# Frontend
+It assumes a backend is running and reachable. The API backend endpoit is read from the environment variable `VUE_APP_BACKEND_ENDPOINT` (default `http://localhost:8080/` for both dev and prod. Can be changed in `config.json` file).
