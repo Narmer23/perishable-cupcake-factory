@@ -38,5 +38,36 @@ Various environment variables can be used to configure the Java application:
 | `CUPCAKE_FACTORY_DAYS_TO_EXPIRE` | _4_            | Application variable. Number of days until a dessert can be declared as expired.    | no       |
 | `CUPCAKE_FACTORY_DAYS_PRICE_MODIFIER_MAP` | _{0:1, 1:1, 2:0.8, 3:0.6}_            | Application variable. Map to calculate the price modifiers. Keys are the number of days passed since production and values are the percent at which they should be sold    | no       |
 
+To build the application run the command `mvn clean install -Dmaven.test.skip=true package`
 # Frontend
 It assumes a backend is running and reachable. The API backend endpoit is read from the environment variable `VUE_APP_BACKEND_ENDPOINT` (default `http://localhost:8080/` for both dev and prod. Can be changed in `config.json` file).
+
+To build the application you need Quasar Framework installed. Once installed run the command `quasar build`.
+
+# Demo
+In the `demo` directory there are the compiled `.jar` for the backend and the builded frontend.  
+In order to test the application you'll need some pre-requisites:
+- Java runtime to run the `.jar`
+- An HTTP server to serve the frontend
+- A MySQL server with a scheme named `cupcake_factory`
+- Ports `8080` and `8081` available (can be changed)
+
+When requirements are met, donwnload or clone the repository and navigate to the `demo` folder using a terminal.  
+### Backend
+Run the command `java -DMYSQL_USER="<YOUR_USER>" -DMYSQL_PASSWORD="<YOUR_PW>" -jar cupcakefactory-0.0.1-SNAPSHOT.jar` changing the `MYSQL_USER` and `MYSQL_PASSWORD` envs accordingly to your environment. Here others envs can be setted.
+
+### Frontend
+Navigate to the folder `spa`. If you have Node you can run the command `npx http-server -p 8081` to download and run an HTTP server on port `8081`. The backend expects the origin `http://localhost:8081` as default, while frontend expects to find the backend at `http://localhost:8080`, so beware on your settings.  
+
+When also the frontend is running you can visit the page `http://localhost:8081` to open the application.  
+
+Enjoy!
+
+
+# TODO
+Since it's a fun project, there are lots of aspects not taken in consideration:
+- **TESTS** !!! This is on purpose btw.
+- Environment management. Create dev and prod environments (e.g. Flyway data).
+- JWT Session management
+- Lots of UX like pagination, some edits, etc.
+- More...
